@@ -13,8 +13,8 @@ class PepParsePipeline:
         return item
 
     def close_spider(self, spider):
-        results_dir = Path('results')
-        results_dir.mkdir(exist_ok=True)
+        feeds = spider.crawler.settings.getdict('FEEDS')
+        results_dir = Path(next(iter(feeds))).parent
 
         timestamp = datetime.now().strftime('%Y-%m-%d_%H-%M-%S')
         filename = results_dir / (
@@ -30,6 +30,7 @@ class PepParsePipeline:
             newline=''
         ) as file:
             writer = csv.writer(file)
+
             writer.writerow(['Статус', 'Количество'])
 
             for status, count in self.statuses.items():
