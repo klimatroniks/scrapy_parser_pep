@@ -21,10 +21,10 @@ class PepSpider(scrapy.Spider):
     def parse_pep(self, response):
         title = response.css('h1::text').getall()[1]
 
-        num, name = title.split(' - ')
+        num, name = title.split(' – ')
         num = num.split()[1]
 
-        status = response.css(
+        status = response.xpath(
             '//dt[text()="Status"]/following-sibling::dd[1]//text()'
         ).get()
 
@@ -33,3 +33,4 @@ class PepSpider(scrapy.Spider):
             name=name,
             status=status
         )
+
