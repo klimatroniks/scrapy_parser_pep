@@ -16,8 +16,8 @@ FEEDS = {
     'results/pep_%(time)s.csv': {
         'format': 'csv',
         'fields': {
-            'number': 'Номер',
             'name': 'Название',
+            'number': 'Номер',
             'status': 'Статус',
         },
         'encoding': 'utf-8',
