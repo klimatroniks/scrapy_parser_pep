@@ -52,7 +52,7 @@
 743,Add Py_OMIT_LEGACY_API to the Python C API,Rejected
 736,Shorthand syntax for keyword arguments at invocation,Rejected
 727,Documentation in Annotated Metadata,Withdrawn
-726,Module ,Rejected
+726,Module __setattr__ and __delattr__,Rejected
 724,Stricter Type Guards,Withdrawn
 722,Dependency specification for single-file scripts,Rejected
 713,Callable Modules,Rejected
@@ -70,7 +70,7 @@
 651,Robust Stack Overflow Handling,Rejected
 650,Specifying Installer Requirements for Python Projects,Withdrawn
 648,Extensible customizations of the interpreter at startup,Rejected
-645,Allow writing optional types as ,Withdrawn
+645,Allow writing optional types as x?,Withdrawn
 642,Explicit Pattern Syntax for Structural Pattern Matching,Rejected
 641,Using an underscore in the version portion of Python 3.10 compatibility tags,Rejected
 640,Unused variable syntax,Rejected
@@ -169,7 +169,7 @@
 350,Codetags,Rejected
 349,Allow str() to return unicode strings,Rejected
 348,Exception Reorganization for Python 3.0,Rejected
-346,User Defined (”,Withdrawn
+346,User Defined (”with”) Statements,Withdrawn
 345,Metadata for Python Software Packages 1.2,Superseded
 344,Exception Chaining and Embedded Tracebacks,Superseded
 340,Anonymous Block Statements,Rejected
@@ -216,7 +216,7 @@
 254,Making Classes Look More Like Types,Rejected
 246,Object Adaptation,Rejected
 245,Python Interface Syntax,Rejected
-244,The ,Rejected
+244,The directive statement,Rejected
 243,Module Repository Upload Mechanism,Withdrawn
 242,Numeric Kinds,Withdrawn
 241,Metadata for Python Software Packages,Superseded
@@ -254,7 +254,7 @@
 533,Deterministic cleanup for iterators,Deferred
 532,A circuit breaking protocol and binary operators,Deferred
 505,None-aware operators,Deferred
-499,,Deferred
+499,python -m foo should also bind 'foo' in sys.modules,Deferred
 491,The Wheel Binary Package Format 1.9,Deferred
 447,Add __getdescriptor__ method to metaclass,Deferred
 444,Python Web3 Interface,Deferred
@@ -355,12 +355,12 @@
 831,Frame Pointers Everywhere: Enabling System-Level Observability for Python,Final
 829,Package Startup Configuration Files,Final
 820,PySlot: Unified slot system for the C API,Final
-815,Deprecate ,Final
+815,Deprecate RECORD.jws and RECORD.p7s,Final
 814,Add frozendict built-in type,Final
 810,Explicit lazy imports,Final
 803,“abi3t”: Stable ABI for Free-Threaded Builds,Final
 800,Disjoint bases in the type system,Final
-799,A dedicated ,Final
+799,A dedicated profiling package for organizing Python profiling tools,Final
 798,Unpacking in Comprehensions,Final
 793,PyModExport: A new entry point for C extension modules,Final
 792,Project status markers in the simple index,Final
@@ -373,7 +373,7 @@
 770,Improving measurability of Python packages with Software Bill-of-Materials,Final
 768,Safe external debugger interface for CPython,Final
 765,Disallow return/break/continue that exit a finally block,Final
-758,Allow ,Final
+758,Allow except and except* expressions without parentheses,Final
 757,C API to import-export Python integers,Final
 753,Uniform project URLs in core metadata,Final
 751,A file format to record Python dependencies for installation reproducibility,Final
@@ -439,7 +439,7 @@
 634,Structural Pattern Matching: Specification,Final
 632,Deprecate distutils module,Final
 629,Versioning PyPI’s Simple API,Final
-628,Add ,Final
+628,Add math.tau,Final
 627,Recording installed projects,Final
 626,Precise line numbers for debugging and other tools.,Final
 625,Filename of a Source Distribution,Final
@@ -454,7 +454,7 @@
 613,Explicit Type Aliases,Final
 612,Parameter Specification Variables,Final
 610,Recording the Direct URL Origin of installed distributions,Final
-604,Allow writing union types as ,Final
+604,Allow writing union types as X | Y,Final
 600,Future ‘manylinux’ Platform Tags for Portable Linux Built Distributions,Final
 597,Add optional EncodingWarning,Final
 594,Removing dead batteries from the standard library,Final
@@ -592,7 +592,7 @@
 230,Warning Framework,Final
 229,Using Distutils to Build Python,Final
 227,Statically Nested Scopes,Final
-223,Change the Meaning of ,Final
+223,Change the Meaning of \x Escapes,Final
 221,Import As,Final
 218,Adding a Built-In Set Object Type,Final
 217,Display Hook for Interactive Use,Final
@@ -608,7 +608,7 @@
 847,Problem Details for the Simple Repository API,Draft
 846,Docstrings for Type Aliases,Draft
 845,Leading-Dot Value Patterns,Draft
-844,,Draft
+844,public and private builtins,Draft
 843,Export Statement for DRY Re-exports,Draft
 841,Adding Frozen Syntax to Optimize Immutable Types,Draft
 840,Name Resolution in Class Namespaces,Draft
@@ -635,8 +635,8 @@
 802,Display Syntax for the Empty Set,Draft
 789,Preventing task-cancellation bugs by limiting yield in async generators,Draft
 786,Precision and modulo-precision flag format specifiers for integer fields,Draft
-785,New methods for easier handling of ,Draft
-781,Make ,Draft
+785,New methods for easier handling of ExceptionGroups,Draft
+781,Make TYPE_CHECKING a built-in constant,Draft
 780,ABI features as environment markers,Draft
 777,How to Re-invent the Wheel,Draft
 771,Default Extras for Python Software Packages,Draft
@@ -664,7 +664,7 @@
 794,Import Name Metadata,Accepted
 783,Emscripten Packaging,Accepted
 752,Implicit namespaces for package repositories,Accepted
-739,,Accepted
+739,build-details.json 1.0 — a static description file for Python build details,Accepted
 714,Rename dist-info-metadata in the Simple API,Accepted
 658,Serve Distribution Metadata in the Simple Repository API,Accepted
 458,Secure PyPI downloads with signed repository metadata,Accepted

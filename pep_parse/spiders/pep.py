@@ -19,7 +19,7 @@ class PepSpider(scrapy.Spider):
             )
 
     def parse_pep(self, response):
-        title = response.css('h1::text').getall()[1]
+        title = response.css('h1')[1].xpath('string(.)').get().strip()
 
         num, name = title.split(' – ')
         num = num.split()[1]

@@ -4,5 +4,40 @@ from collections import Counter
 from pathlib import Path
 
 class PepParsePipeline:
-    def process_item(self, item):
+
+    def open_spider(self, spider):
+        self.statuses = Counter()
+
+    def process_item(self, item, spider):
+        self.statuses[item['status']] += 1
         return item
+
+    def close_spider(self, spider):
+        results_dir = Path('results')
+        results_dir.mkdir(exist_ok=True)
+
+        current_time = datetime.now().strftime(
+            '%Y-%m-%d_%H-%M-%S'
+        )
+
+        filename = (
+            results_dir
+            / f'status_summary_{current_time}.csv'
+        )
+
+        total = sum(self.statuses.values())
+
+        with open(
+            filename,
+            mode='w',
+            encoding='utf-8',
+            newline=''
+        ) as file:
+            writer = csv.writer(file)
+
+            writer.writerow(['Статус', 'Количество'])
+
+            for status, count in self.statuses.items():
+                writer.writerow([status, count])
+
+            writer.writerow(['Total', total])
