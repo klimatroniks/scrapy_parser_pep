@@ -1,6 +1,6 @@
 import csv
-from datetime import datetime
 from collections import Counter
+from datetime import datetime
 from pathlib import Path
 
 
@@ -21,19 +21,17 @@ class PepParsePipeline:
             f'status_summary_{timestamp}.csv'
         )
 
-        total = sum(self.statuses.values())
-
         with open(
             filename,
             mode='w',
             encoding='utf-8',
             newline=''
         ) as file:
-            writer = csv.writer(file)
+            writer = csv.writer(file, dialect='excel')
 
-            writer.writerow(['Статус', 'Количество'])
+            rows = [
+                ['Статус', 'Количество'],
+                *self.statuses.items(),
+                ['Всего', sum(self.statuses.values())]],
 
-            for status, count in self.statuses.items():
-                writer.writerow([status, count])
-
-            writer.writerow(['Total', total])
+            writer.writerows(rows)
