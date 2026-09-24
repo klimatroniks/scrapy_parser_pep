@@ -15,11 +15,7 @@ FEED_EXPORT_ENCODING = "utf-8"
 FEEDS = {
     'results/pep_%(time)s.csv': {
         'format': 'csv',
-        'fields': {
-            'name': 'Название',
-            'number': 'Номер',
-            'status': 'Статус',
-        },
+        'fields': ['number', 'name', 'status'],
         'encoding': 'utf-8',
         'overwrite': True,
     },

@@ -3,8 +3,8 @@ from datetime import datetime
 from collections import Counter
 from pathlib import Path
 
-class PepParsePipeline:
 
+class PepParsePipeline:
     def open_spider(self, spider):
         self.statuses = Counter()
 
@@ -16,13 +16,9 @@ class PepParsePipeline:
         results_dir = Path('results')
         results_dir.mkdir(exist_ok=True)
 
-        current_time = datetime.now().strftime(
-            '%Y-%m-%d_%H-%M-%S'
-        )
-
-        filename = (
-            results_dir
-            / f'status_summary_{current_time}.csv'
+        timestamp = datetime.now().strftime('%Y-%m-%d_%H-%M-%S')
+        filename = results_dir / (
+            f'status_summary_{timestamp}.csv'
         )
 
         total = sum(self.statuses.values())
@@ -34,7 +30,6 @@ class PepParsePipeline:
             newline=''
         ) as file:
             writer = csv.writer(file)
-
             writer.writerow(['Статус', 'Количество'])
 
             for status, count in self.statuses.items():
