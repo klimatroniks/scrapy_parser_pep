@@ -19,11 +19,17 @@ class PepSpider(scrapy.Spider):
             )
 
     def parse_pep(self, response):
-        title = response.css('').get()
-        status = response.css('').get()
+        title = response.css('h1::text').getall()[1]
+
+        num, name = title.split(' - ')
+        num = num.split()[1]
+
+        status = response.css(
+            '//dt[text()="Status"]/following-sibling::dd[1]//text()'
+        ).get()
 
         yield PepParseItem(
-            number=number,
+            number=num,
             name=name,
             status=status
         )
