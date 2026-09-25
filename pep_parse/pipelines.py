@@ -3,12 +3,8 @@ from collections import Counter
 from datetime import datetime
 from pathlib import Path
 
-from pep_parse.constants import (
-    CSV_DIALECT,
-    DATETIME_FORMAT,
-    FEEDS_SETTING,
-    STATUS_SUMMARY_FILENAME,
-)
+from pep_parse.constants import DATETIME_FORMAT, FEEDS_SETTING
+from pep_parse.settings import STATUS_SUMMARY_FILENAME
 
 
 class PepParsePipeline:
@@ -24,7 +20,9 @@ class PepParsePipeline:
         results_dir = Path(next(iter(feeds))).parent
 
         timestamp = datetime.now().strftime(DATETIME_FORMAT)
-        filename = results_dir / STATUS_SUMMARY_FILENAME.format(timestamp)
+        filename = results_dir / (
+            STATUS_SUMMARY_FILENAME.format(timestamp)
+        )
 
         total = sum(self.statuses.values())
 
@@ -34,7 +32,7 @@ class PepParsePipeline:
             encoding='utf-8',
             newline=''
         ) as file:
-            writer = csv.writer(file, dialect=CSV_DIALECT)
+            writer = csv.writer(file, dialect=csv.excel)
 
             rows = [
                 ['Статус', 'Количество'],

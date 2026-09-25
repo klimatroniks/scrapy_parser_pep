@@ -1,5 +1,2 @@
 DATETIME_FORMAT = '%Y-%m-%d_%H-%M-%S'
-CSV_DIALECT = 'excel'
 FEEDS_SETTING = 'FEEDS'
-STATUS_SUMMARY_FILENAME = 'status_summary_{}.csv'
-RESULTS_DIR = 'results'

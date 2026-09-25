@@ -1,4 +1,5 @@
-from pep_parse.constants import RESULTS_DIR
+RESULTS_DIR = 'results'
+STATUS_SUMMARY_FILENAME = 'status_summary_{}.csv'
 
 BOT_NAME = 'pep_parse'
 
@@ -12,7 +13,7 @@ ROBOTSTXT_OBEY = True
 CONCURRENT_REQUESTS_PER_DOMAIN = 1
 DOWNLOAD_DELAY = 1
 
-FEED_EXPORT_ENCODING = "utf-8"
+FEED_EXPORT_ENCODING = 'utf-8'
 
 FEEDS = {
     f'{RESULTS_DIR}/pep_%(time)s.csv': {
@@ -24,5 +25,5 @@ FEEDS = {
 }
 
 ITEM_PIPELINES = {
-    "pep_parse.pipelines.PepParsePipeline": 300,
+    'pep_parse.pipelines.PepParsePipeline': 300,
 }
