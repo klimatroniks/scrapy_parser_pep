@@ -18,8 +18,7 @@ class PepParsePipeline:
     def close_spider(self, spider):
         timestamp = datetime.now().strftime(DATETIME_FORMAT)
         filename = (
-            RESULTS_DIR
-            / STATUS_SUMMARY_FILENAME.format(timestamp)
+            RESULTS_DIR / STATUS_SUMMARY_FILENAME.format(timestamp)
         )
 
         with open(
