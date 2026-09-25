@@ -1,4 +1,5 @@
 import scrapy
+
 from pep_parse.items import PepParseItem
 
 
@@ -19,14 +20,14 @@ class PepSpider(scrapy.Spider):
             )
 
     def parse_pep(self, response):
-        title = response.xpath('string((//h1)[2])').get().strip()
+        title = response.css('h1')[1].css('::text').get().strip()
 
         num, name = title.split(' – ')
         num = num.split()[1]
 
-        status = response.xpath(
-            '//dt[text()="Status"]/following-sibling::dd[1]//text()'
-        ).get()
+        status = response.css(
+            'dt:contains("Status") + dd::text'
+        ).get().strip()
 
         yield PepParseItem(
             number=num,
