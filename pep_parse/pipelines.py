@@ -3,6 +3,13 @@ from collections import Counter
 from datetime import datetime
 from pathlib import Path
 
+from pep_parse.constants import (
+    CSV_DIALECT,
+    DATETIME_FORMAT,
+    FEEDS_SETTING,
+    STATUS_SUMMARY_FILENAME,
+)
+
 
 class PepParsePipeline:
     def open_spider(self, spider):
@@ -13,13 +20,13 @@ class PepParsePipeline:
         return item
 
     def close_spider(self, spider):
-        feeds = spider.crawler.settings.getdict('FEEDS')
+        feeds = spider.crawler.settings.getdict(FEEDS_SETTING)
         results_dir = Path(next(iter(feeds))).parent
 
-        timestamp = datetime.now().strftime('%Y-%m-%d_%H-%M-%S')
-        filename = results_dir / (
-            f'status_summary_{timestamp}.csv'
-        )
+        timestamp = datetime.now().strftime(DATETIME_FORMAT)
+        filename = results_dir / STATUS_SUMMARY_FILENAME.format(timestamp)
+
+        total = sum(self.statuses.values())
 
         with open(
             filename,
@@ -27,11 +34,12 @@ class PepParsePipeline:
             encoding='utf-8',
             newline=''
         ) as file:
-            writer = csv.writer(file, dialect='excel')
+            writer = csv.writer(file, dialect=CSV_DIALECT)
 
             rows = [
                 ['Статус', 'Количество'],
                 *self.statuses.items(),
-                ['Всего', sum(self.statuses.values())]],
+                ['Total', total],
+            ]
 
             writer.writerows(rows)

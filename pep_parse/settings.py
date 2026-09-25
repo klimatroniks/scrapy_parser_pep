@@ -1,9 +1,9 @@
-BOT_NAME = "pep_parse"
+from pep_parse.constants import RESULTS_DIR
 
-SPIDERS_MODULE = 'pep_parse.spiders'
+BOT_NAME = 'pep_parse'
 
-SPIDER_MODULES = [SPIDERS_MODULE]
-NEWSPIDER_MODULE = SPIDERS_MODULE
+NEWSPIDER_MODULE = 'pep_parse.spiders'
+SPIDER_MODULES = [NEWSPIDER_MODULE]
 
 ADDONS = {}
 
@@ -15,11 +15,11 @@ DOWNLOAD_DELAY = 1
 FEED_EXPORT_ENCODING = "utf-8"
 
 FEEDS = {
-    "results/pep_%(time)s.csv": {
-        "format": "csv",
-        "fields": ["number", "name", "status"],
-        "encoding": "utf-8",
-        "overwrite": True,
+    f'{RESULTS_DIR}/pep_%(time)s.csv': {
+        'format': 'csv',
+        'fields': ['number', 'name', 'status'],
+        'encoding': 'utf-8',
+        'overwrite': True,
     },
 }
 
