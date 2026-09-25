@@ -4,6 +4,9 @@ from pathlib import Path
 BASE_DIR = Path(__file__).resolve().parent.parent
 RESULTS_FOLDER = 'results'
 RESULTS_DIR = BASE_DIR / RESULTS_FOLDER
+
+DATETIME_FORMAT = '%Y-%m-%d_%H-%M-%S'
+
 STATUS_SUMMARY_FILENAME = 'status_summary_{}.csv'
 
 BOT_NAME = 'pep_parse'
