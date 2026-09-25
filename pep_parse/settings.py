@@ -1,4 +1,9 @@
-RESULTS_DIR = 'results'
+from pathlib import Path
+
+
+BASE_DIR = Path(__file__).resolve().parent.parent
+RESULTS_FOLDER = 'results'
+RESULTS_DIR = BASE_DIR / RESULTS_FOLDER
 STATUS_SUMMARY_FILENAME = 'status_summary_{}.csv'
 
 BOT_NAME = 'pep_parse'
@@ -16,7 +21,7 @@ DOWNLOAD_DELAY = 1
 FEED_EXPORT_ENCODING = 'utf-8'
 
 FEEDS = {
-    f'{RESULTS_DIR}/pep_%(time)s.csv': {
+    f'{RESULTS_FOLDER}/pep_%(time)s.csv': {
         'format': 'csv',
         'fields': ['number', 'name', 'status'],
         'encoding': 'utf-8',
